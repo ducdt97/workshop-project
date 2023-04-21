@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import Cart from "./Cart/Cart";
 
 function Navbar() {
+  const [open, setOpen] = useState(false);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container px-4 px-lg-5">
@@ -56,14 +59,16 @@ function Navbar() {
               </ul>
             </li>
           </ul>
-          <form className="d-flex">
-            <button className="btn btn-outline-dark" type="submit">
-              <i className="bi-cart-fill me-1"></i>
-              Cart
-              <span className="badge bg-dark text-white ms-1 rounded-pill">0</span>
-            </button>
-          </form>
+          <button
+            className="btn btn-outline-dark"
+            type="button"
+            onClick={() => setOpen(!open)}
+          >
+            <i className="bi-cart-fill me-1"></i>Cart
+            <span className="badge bg-dark text-white ms-1 rounded-pill"> 0</span>
+          </button>
         </div>
+        {open && <Cart />}
       </div>
     </nav>
   );

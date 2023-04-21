@@ -19,7 +19,6 @@ function Products() {
     };
     fetchData();
   }, []);
-  console.log(products);
 
   return (
     <section className="py-5">
