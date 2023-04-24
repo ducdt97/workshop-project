@@ -49,7 +49,3 @@
     font-size: 12px;
     cursor: pointer;
 }
-.check{
-    display: flex !important;
-    flex-direction: column !important;
-}

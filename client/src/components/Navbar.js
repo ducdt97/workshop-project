@@ -33,30 +33,15 @@ function Navbar() {
                 About
               </a>
             </li>
-            <li className="nav-item dropdown">
-              <Link to="/products" className="nav-link dropdown-toggle">
-                Shop
+            <li className="nav-item">
+              <Link to="/products/1" className="nav-link">
+                Men
               </Link>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a className="dropdown-item" href="#!">
-                    All Products
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#!">
-                    Popular Items
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#!">
-                    New Arrivals
-                  </a>
-                </li>
-              </ul>
+            </li>
+            <li className="nav-item">
+              <Link to="/products/2" className="nav-link">
+                Women
+              </Link>
             </li>
           </ul>
           <button

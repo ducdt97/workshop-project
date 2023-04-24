@@ -7,8 +7,7 @@ function Home() {
     <div className="home">
       <div
         id="carouselExample"
-        className="carousel slide container px-4 px-lg-5 mt-5"
-        style={{gap: "10px"}}
+        className="carousel slide container px-4 px-lg-5 mt-5 gap-3"
       >
         <div className="carousel-inner">
           <div className="carousel-item active">

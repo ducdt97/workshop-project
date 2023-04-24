@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import List from "../components/List";
 
 function Products() {
+  const catId = parseInt(useParams().id);
   const apiUrl = "http://localhost:1337";
   const [products, setProducts] = useState([]);
+  const [selected, setSelected] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          apiUrl + "/api/products?populate=*"
-        );
+        const res = await axios.get(apiUrl + `/api/sub-categories?[filters][categories][id][$eq]=${catId}`);
         setProducts(res.data.data);
       } catch (err) {
         console.log(err);
@@ -20,54 +21,62 @@ function Products() {
     fetchData();
   }, []);
 
+const handleChange = (e) => {
+  const value = e.target.value;
+  const isChecked = e.target.checked;
+  setSelected(isChecked ? [...selected, value] : selected.filter((item) => item !== value))
+}
+
   return (
     <section className="py-5">
-      <div className="container px-4 px-lg-5 mt-5">
-        <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-          {products.map((item) => (
-            <div key={item.id} className="col mb-5">
-              <div className="card h-100">
-                {/* * <!-- Product image--> * */}
-                <img
-                  className="card-img-top"
-                  src={apiUrl + item.attributes?.img?.data[0]?.attributes?.url}
-                  alt="..."
-                />
-                {/* <!-- Product details--> */}
-                <div className="card-body">
-                  <div className="text-center">
-                    {/* <!-- Product name--> */}
-                    <h5 className="fw-bolder">{item.attributes.title}</h5>
-                    {/* <!-- Product price--> */}${item.attributes.price}
-                  </div>
-                </div>
-                {/* <!-- Product actions--> */}
-                <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                  <div className="text-center">
-                    <Link
-                      to="/product"
-                      className="btn btn-outline-dark mt-auto"
-                    >
-                      Details
-                    </Link>
-                  </div>
-                </div>
-              </div>
+      <div className="d-flex px-4 px-lg-5 mt-5">
+        <div className="sticky-top h-100 t-50 px-3 " style={{ flex: "1" }}>
+          <div className="filter mb-auto">
+            <h3 style={{fontWeight: "400", marginBottom:"20px"}}>Product Categories</h3>
+            {products.map(item => (
+            <div className="form-check" key={item.id}>
+              <input
+                className="form-check-input"
+                type="checkbox"
+                value={item.id}
+                id={item.id}
+                onChange={handleChange}
+              />
+              <label className="form-check-label" htmlFor={item.id}>{item.attributes.title}</label>
             </div>
-          ))}
-          <div className="col mb-5">
-            <div className="card h-100">
-              {/* <!-- Sale badge--> */}
-              <div
-                className="badge bg-dark text-white position-absolute"
-                style={{ top: "0.5rem", right: "0.5rem" }}
-              >
-                Sale
-              </div>
+            ))}
+          </div>
+          <div className="filter mb-auto">
+            <h3 style={{fontWeight: "400", marginBottom:"20px"}}>Sort by</h3>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="flexRadioDefault1"
+              />
+              <label className="form-check-label" htmlFor="flexRadioDefault1">
+                Price (Lowest first)
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="flexRadioDefault2"
+              />
+              <label className="form-check-label" htmlFor="flexRadioDefault2">
+                Price (Highest first)
+              </label>
             </div>
           </div>
         </div>
-      </div>
+        <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
+        style={{ flex: "3" }}>
+        <List catId={catId} subCats={selected}/>
+        </div>
+        </div>
     </section>
   );
 }

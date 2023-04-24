@@ -15,7 +15,7 @@ function Cart() {
             <span>Total</span>
             <span>$111</span>
         </div>
-        <div style={{display: "flex", flexDirection: "column", gap: "10px"}}>
+        <div className="d-flex flex-column gap-2">
         <button className="btn btn-secondary">Checkout</button>
         <span className="reset">Reset Card</span>
         </div>
