@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Cart from "./Cart/Cart";
+
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+  const products = useSelector(state => state.cart.products)
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="sticky-top navbar navbar-expand-lg navbar-light bg-light">
       <div className="container px-4 px-lg-5">
         <Link to="/" className="navbar-brand">
           Workshop
@@ -50,7 +54,7 @@ function Navbar() {
             onClick={() => setOpen(!open)}
           >
             <i className="bi-cart-fill me-1"></i>Cart
-            <span className="badge bg-dark text-white ms-1 rounded-pill"> 0</span>
+            <span className="badge bg-dark text-white ms-1 rounded-pill">{products.length}</span>
           </button>
         </div>
         {open && <Cart />}

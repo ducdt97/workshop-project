@@ -6,14 +6,14 @@ import List from "../components/List";
 function Products() {
   const catId = parseInt(useParams().id);
   const apiUrl = "http://localhost:1337";
-  const [products, setProducts] = useState([]);
-  const [selected, setSelected] = useState([])
+  const [cate, setCate] = useState([]);
+  const [selected, setSelected] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await axios.get(apiUrl + `/api/sub-categories?[filters][categories][id][$eq]=${catId}`);
-        setProducts(res.data.data);
+        setCate(res.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -24,16 +24,16 @@ function Products() {
 const handleChange = (e) => {
   const value = e.target.value;
   const isChecked = e.target.checked;
-  setSelected(isChecked ? [...selected, value] : selected.filter((item) => item !== value))
+  setSelected(isChecked ? [...selected, value] : selected.filter((item) => item !== value));
 }
-
+console.log(selected)
   return (
     <section className="py-5">
       <div className="d-flex px-4 px-lg-5 mt-5">
-        <div className="sticky-top h-100 t-50 px-3 " style={{ flex: "1" }}>
+        <div className="h-100 t-50 px-3 " style={{ flex: "1" }}>
           <div className="filter mb-auto">
             <h3 style={{fontWeight: "400", marginBottom:"20px"}}>Product Categories</h3>
-            {products.map(item => (
+            {cate?.map((item) => (
             <div className="form-check" key={item.id}>
               <input
                 className="form-check-input"
@@ -74,7 +74,7 @@ const handleChange = (e) => {
         </div>
         <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
         style={{ flex: "3" }}>
-        <List catId={catId} subCats={selected}/>
+        <List catId={catId} subCats={selected} />
         </div>
         </div>
     </section>

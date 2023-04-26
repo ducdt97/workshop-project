@@ -4,14 +4,18 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
+import "bootstrap-icons/font/bootstrap-icons.css"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Products from "./pages/Products";
 import Product from "./pages/Product";
 import Home from "./pages/Home";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
@@ -21,6 +25,7 @@ root.render(
         </Route>
       </Routes>
     </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

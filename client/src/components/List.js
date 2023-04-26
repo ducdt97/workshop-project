@@ -9,7 +9,8 @@ function List({catId, subCats}) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(apiUrl + `/api/products?populate=*&[filters][categories][id]=${catId}`);
+        const res = await axios.get(apiUrl + `/api/products?populate=*&[filters][categories][id]=${catId}${subCats.map(
+          (item) => `&[filters][sub_categories][id][$eq]=${item}`)}`);
         setData(res.data.data);     
       } catch (err) {
         console.log(err);
@@ -17,10 +18,10 @@ function List({catId, subCats}) {
     };
     fetchData();
   }, []);
-  console.log(data)
+// console.log(subCats)
     return (
         <>
-            {data.map(item =>( <Card item={item} key={item.id} />))}
+            {data.map((item) => <Card item={item} key={item.id} />)}
         </>
     )
 }
