@@ -1,39 +1,27 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import List from "../components/List";
+import useFetch from "../hooks/useFetch";
 
 function Products() {
   const catId = parseInt(useParams().id);
-  const apiUrl = "http://localhost:1337";
-  const [cate, setCate] = useState([]);
   const [selected, setSelected] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(apiUrl + `/api/sub-categories?[filters][categories][id][$eq]=${catId}`);
-        setCate(res.data.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
-  }, []);
+  const [sort, setSort] = useState("asc");
+  const {data, loading, error} = useFetch(`/sub-categories?[filters][categories][id][$eq]=${catId}`)
 
 const handleChange = (e) => {
   const value = e.target.value;
   const isChecked = e.target.checked;
   setSelected(isChecked ? [...selected, value] : selected.filter((item) => item !== value));
 }
-console.log(selected)
+console.log(sort)
   return (
     <section className="py-5">
       <div className="d-flex px-4 px-lg-5 mt-5">
         <div className="h-100 t-50 px-3 " style={{ flex: "1" }}>
           <div className="filter mb-auto">
             <h3 style={{fontWeight: "400", marginBottom:"20px"}}>Product Categories</h3>
-            {cate?.map((item) => (
+            {data?.map((item) => (
             <div className="form-check" key={item.id}>
               <input
                 className="form-check-input"
@@ -52,10 +40,12 @@ console.log(selected)
               <input
                 className="form-check-input"
                 type="radio"
-                name="flexRadioDefault"
-                id="flexRadioDefault1"
+                name="price"
+                id="asc"
+                value="asc"
+                onChange={() => setSort("asc")}
               />
-              <label className="form-check-label" htmlFor="flexRadioDefault1">
+              <label className="form-check-label" htmlFor="asc">
                 Price (Lowest first)
               </label>
             </div>
@@ -63,10 +53,12 @@ console.log(selected)
               <input
                 className="form-check-input"
                 type="radio"
-                name="flexRadioDefault"
-                id="flexRadioDefault2"
+                name="price"
+                id="desc"
+                value="desc"
+                onChange={() => setSort("desc")}
               />
-              <label className="form-check-label" htmlFor="flexRadioDefault2">
+              <label className="form-check-label" htmlFor="desc">
                 Price (Highest first)
               </label>
             </div>
@@ -74,7 +66,7 @@ console.log(selected)
         </div>
         <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
         style={{ flex: "3" }}>
-        <List catId={catId} subCats={selected} />
+        <List catId={catId} subCats={selected} sort={sort} />
         </div>
         </div>
     </section>

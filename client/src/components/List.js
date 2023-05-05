@@ -1,27 +1,13 @@
+import useFetch from "../hooks/useFetch";
 import Card from "./Card";
-import axios from "axios";
-import { useEffect, useState } from "react";
 
-function List({catId, subCats}) {
-    const apiUrl = "http://localhost:1337";
-    const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(apiUrl + `/api/products?populate=*&[filters][categories][id]=${catId}${subCats.map(
-          (item) => `&[filters][sub_categories][id][$eq]=${item}`)}`);
-        setData(res.data.data);     
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
-  }, []);
-// console.log(subCats)
+function List({catId, subCats, sort}) {
+    const {data, loading, error} = useFetch(`/products?populate=*&[filters][categories][id]=${catId}${subCats.map(
+      (item) => `&[filters][sub_categories][id][$eq]=${item}`)}&sort=price:${sort}`) 
+  
     return (
         <>
-            {data.map((item) => <Card item={item} key={item.id} />)}
+            {data?.map((item) => <Card item={item} key={item.id} />)}
         </>
     )
 }

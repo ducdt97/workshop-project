@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 function Card({item}){
     const apiUrl = "http://localhost:1337"; 
-
     return (
             <div className="col mb-5">
               <div className="card h-100">
@@ -16,8 +15,8 @@ function Card({item}){
                 <div className="card-body">
                   <div className="text-center">
                     {/* <!-- Product name--> */}
-                    <h5 className="fw-bolder">{item.attributes.title}</h5>
-                    {/* <!-- Product price--> */}${item.attributes.price}
+                    <h5 className="fw-bolder">{item.attributes?.title}</h5>
+                    {/* <!-- Product price--> */}${item.attributes?.price }
                   </div>
                 </div>
                 {/* <!-- Product actions--> */}
