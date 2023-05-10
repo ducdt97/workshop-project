@@ -1,0 +1,38 @@
+.table{
+    .images{
+        display: flex;
+        align-items: center;
+
+        .image{
+            width: 70px;
+            height:70px;
+            border-radius: 20%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+    }
+}
+.tablecell{
+    display: flex;
+    align-items: center;
+    gap:15px;
+    img{
+        width: 70px;
+        height:70px;
+        border-radius: 20%;
+        margin-right: 10px;
+        object-fit: cover;
+    }
+    .delete{
+        padding: 2px 5px ;
+        border-radius: 5px;
+        color: darkblue;
+        border: 1px dotted rgb(63, 63, 218);
+    }
+    .edit{
+        padding: 2px 5px ;
+        border-radius: 5px;
+        color: yellow;
+        border: 1px dotted rgb(218, 218, 63);
+    }
+}
