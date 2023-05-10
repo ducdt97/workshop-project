@@ -1,23 +1,23 @@
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem, resetCart } from "../../redux/cartReducer";
+import { removeItem, resetCart, calculateTotal } from "../../redux/cartReducer";
 import "./Cart.css"
+import { Link } from "react-router-dom";
+import { createSelector } from "@reduxjs/toolkit";
+export const selectCartProducts = createSelector(
+  state => state.cart.products,
+  products => products,
+);
 
 function Cart() {
   const products = useSelector(state => state.cart.products)
+  const total = useSelector(state => state.cart.total);
   const dispatch = useDispatch();
-  const totalPrice = () => {
-    let total = 0;
-    products.forEach(item => {
-      total += item.number * item.price;
-    });
-    return total.toFixed(2);
-  }
 
   return (
     <div className="cart">
         <h1 className="text">Products in your cart</h1>
-        {products.map((item) => (
-        <div className="item" key={item.id}>
+        {products?.map((item) => (
+        <div className="item" key={item.id} onLoad={() => dispatch(calculateTotal())}>
             <img style={{width:"80px", height:"100px", objectFit:"cover"}} src={item.img} alt="" />
             <div className="details">
                 <h1 className="text1">{item.title}</h1>
@@ -29,10 +29,10 @@ function Cart() {
         ))}
         <div className="total">
             <span>Total</span>
-            <span>${totalPrice()}</span>
+            <span>${total}</span>
         </div>
         <div className="d-flex flex-column gap-2">
-        <button className="btn btn-secondary">Checkout</button>
+        <Link to="/checkout" className="btn btn-primary mt-auto">Checkout</Link>
         <span className="reset" onClick={() => dispatch(resetCart())}>Reset Card</span>
         </div>
     </div>

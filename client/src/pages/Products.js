@@ -14,13 +14,13 @@ const handleChange = (e) => {
   const isChecked = e.target.checked;
   setSelected(isChecked ? [...selected, value] : selected.filter((item) => item !== value));
 }
-console.log(sort)
+
   return (
     <section className="py-5">
       <div className="d-flex px-4 px-lg-5 mt-5">
         <div className="h-100 t-50 px-3 " style={{ flex: "1" }}>
-          <div className="filter mb-auto">
-            <h3 style={{fontWeight: "400", marginBottom:"20px"}}>Product Categories</h3>
+          <div className="filter mb-5">
+            <h3 className="text-secondary fs-3">Product Categories</h3>
             {data?.map((item) => (
             <div className="form-check" key={item.id}>
               <input
@@ -34,8 +34,8 @@ console.log(sort)
             </div>
             ))}
           </div>
-          <div className="filter mb-auto">
-            <h3 style={{fontWeight: "400", marginBottom:"20px"}}>Sort by</h3>
+          <div className="filter mb-5">
+            <h3 className="text-secondary fs-3">Sort by</h3>
             <div className="form-check">
               <input
                 className="form-check-input"

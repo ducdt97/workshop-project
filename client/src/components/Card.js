@@ -7,13 +7,13 @@ function Card({item}){
               <div className="card h-100">
                 {/* * <!-- Product image--> * */}
                 <img
-                  className="card-img-top"
+                  className="card-img-top h-50"
                   src={apiUrl + item.attributes?.img?.data[0]?.attributes?.url}
                   alt="..."
                 />
                 {/* <!-- Product details--> */}
                 <div className="card-body">
-                  <div className="text-center">
+                  <div className="text-center ">
                     {/* <!-- Product name--> */}
                     <h5 className="fw-bolder">{item.attributes?.title}</h5>
                     {/* <!-- Product price--> */}${item.attributes?.price }

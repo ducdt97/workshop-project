@@ -9,8 +9,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Products from "./pages/Products";
 import Product from "./pages/Product";
 import Home from "./pages/Home";
+import About from "./pages/About/About";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
+import Checkout from "./pages/Checkout/Checkout";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,7 +23,9 @@ root.render(
         <Route path="/" element={<App />}>
           <Route path="products/:id" element={<Products />} />
           <Route path="product/:id" element={<Product />} />
+          <Route path="about" element={<About/>} />
           <Route index element={<Home />} />
+          <Route path="checkout" element={<Checkout/>} />
         </Route>
       </Routes>
     </BrowserRouter>
