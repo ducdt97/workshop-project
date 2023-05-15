@@ -30,7 +30,7 @@ function About() {
           </div>
           <div className="col-md-5 col-sm-6 col-xs-12">
             <div className="feature">
-              <div className="feature-box">
+              <div className="feature-box mb-5">
                 <div className="clearfix">
                   <div className="iconset">
                     <i className="bi bi-code-square icon"></i>

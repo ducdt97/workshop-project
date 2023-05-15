@@ -14,7 +14,9 @@ function Cart() {
   const dispatch = useDispatch();
 
   return (
-    <div className="cart">
+      <div className="cart"> 
+      {products.length > 0 ? (
+        <>
         <h1 className="text">Products in your cart</h1>
         {products?.map((item) => (
         <div className="item" key={item.id} onLoad={() => dispatch(calculateTotal())}>
@@ -35,8 +37,10 @@ function Cart() {
         <Link to="/checkout" className="btn btn-primary mt-auto">Checkout</Link>
         <span className="reset" onClick={() => dispatch(resetCart())}>Reset Card</span>
         </div>
-    </div>
-  );
-}
-
+        </> 
+        ) : <span className="notice">No products in your cart</span>
+      }
+      </div> 
+        )
+        };
 export default Cart;

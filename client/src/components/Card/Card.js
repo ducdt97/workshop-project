@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./Card.css"
 
 function Card({item}){
     const apiUrl = "http://localhost:1337"; 
@@ -24,7 +25,7 @@ function Card({item}){
                   <div className="text-center">
                     <Link
                       to={`/product/${item.id}`}
-                      className="btn btn-outline-dark mt-auto"
+                      className="btn btn-outline-dark mt-auto but"
                     >
                       Details
                     </Link>

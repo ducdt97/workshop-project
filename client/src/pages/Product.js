@@ -20,17 +20,20 @@ function Product() {
             <div className="d-flex px-4 px-lg-5 my-5">
                 <div className="col p-3 gap-3" style={{flex: "1"}}>
                   <img 
-                    className="btn border w-75 h-150 object-fit-cover pe-auto mb-2" 
+                    className="btn border w-75 h-150 object-fit-cover pe-auto mb-2"
+                    alt="" 
                     src={apiUrl + data?.attributes?.img?.data[0]?.attributes?.url}
                     onClick={() => setSelectedImg(0)}
                   />
                   <img 
                     className="btn border w-75 h-150 object-fit-cover pe-auto mb-2" 
+                    alt="" 
                     src={apiUrl + data?.attributes?.img?.data[1]?.attributes?.url}
                     onClick={() => setSelectedImg(1)}
                   />
                   <img 
-                    className="btn border w-75 h-150 object-fit-cover pe-auto mb-2" 
+                    className="btn border w-75 h-150 object-fit-cover pe-auto mb-2"
+                    alt=""  
                     src={apiUrl + data?.attributes?.img?.data[2]?.attributes?.url}
                     onClick={() => setSelectedImg(2)}
                   />
@@ -50,6 +53,8 @@ function Product() {
                             <span>${data?.attributes?.price}</span>
                         </div>
                         <p className="lead">{data?.attributes?.description}</p>
+                        <br/>
+                        <p className="lead">{data?.attributes?.subDescription}</p>
                         <div className="d-flex mt-5" style={{gap: "10px", alignItems: "center"}}>
                         <button type="button" className="btn btn-outline-dark" onClick={() => setNumber((pre) => pre ===1 ? 1: pre -1)}>-</button>
                         {number}
@@ -58,6 +63,7 @@ function Product() {
                               id: data.id,
                               title: data.attributes.title,
                               description: data.attributes.description,
+                              subDescription: data.attributes.subDescription,
                               price: data.attributes.price,
                               img: apiUrl + data.attributes.img.data[selectedImg].attributes.url,
                               number

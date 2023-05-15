@@ -51,6 +51,9 @@
         "M",
         "L"
       ]
+    },
+    "subDescription": {
+      "type": "text"
     }
   }
 }

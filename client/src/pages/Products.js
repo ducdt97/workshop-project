@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import List from "../components/List";
 import useFetch from "../hooks/useFetch";
+import "./style.css"
 
 function Products() {
   const catId = parseInt(useParams().id);
@@ -18,9 +19,9 @@ const handleChange = (e) => {
   return (
     <section className="py-5">
       <div className="d-flex px-4 px-lg-5 mt-5">
-        <div className="h-100 t-50 px-3 " style={{ flex: "1" }}>
+        <div className="h-100 t-50 px-3" style={{ flex: "1" }}>
           <div className="filter mb-5">
-            <h3 className="text-secondary fs-3">Product Categories</h3>
+            <h3 className="bi bi-backspace-reverse-fill text-secondary fs-3"> Product Categories</h3>
             {data?.map((item) => (
             <div className="form-check" key={item.id}>
               <input
@@ -35,7 +36,7 @@ const handleChange = (e) => {
             ))}
           </div>
           <div className="filter mb-5">
-            <h3 className="text-secondary fs-3">Sort by</h3>
+            <h3 className="bi bi-backspace-reverse-fill text-secondary fs-3"> Sort by</h3>
             <div className="form-check">
               <input
                 className="form-check-input"
@@ -64,9 +65,9 @@ const handleChange = (e) => {
             </div>
           </div>
         </div>
-        <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
+        <div className="list"
         style={{ flex: "3" }}>
-        <List catId={catId} subCats={selected} sort={sort} />
+        <List catId={catId} subCats={selected} sort={sort}/>
         </div>
         </div>
     </section>
