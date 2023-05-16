@@ -1,9 +1,9 @@
-import useFetch from "../hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 import { useState } from "react";
-import Card from "./Card/Card";
+import Card from "../Card/Card";
+import "./List.css"
 
 function List({ catId, subCats, sort }) {
-  console.log(subCats, 'subCats');
   const [pageIndex, setPageIndex] = useState(1);
   const [query, setQuery] = useState("");
   let subUrl = '';

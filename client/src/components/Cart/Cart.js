@@ -23,7 +23,7 @@ function Cart() {
             <img style={{width:"80px", height:"100px", objectFit:"cover"}} src={item.img} alt="" />
             <div className="details">
                 <h1 className="text1">{item.title}</h1>
-                <p className="text2">{item.description}n</p>
+                <p className="text2">{item.description}</p>
                 <div className="price">{item.number} x ${item.price}</div>
             </div>
             <i className="bi bi-trash3-fill delete" onClick={() => dispatch(removeItem(item.id))}></i>

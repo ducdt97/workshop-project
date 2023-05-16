@@ -44,14 +44,6 @@
       "target": "api::sub-category.sub-category",
       "inversedBy": "products"
     },
-    "size": {
-      "type": "enumeration",
-      "enum": [
-        "S ",
-        "M",
-        "L"
-      ]
-    },
     "subDescription": {
       "type": "text"
     }
