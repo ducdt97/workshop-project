@@ -11,13 +11,11 @@
         .logo{
             font-size: 20px;
             font-weight: bold;
-            color: #6439ff;
+            color: #9980f0;
+            text-decoration: none;
         }
     }
-    hr{
-        height: 0;
-        border: 0.5px solid rgb(225, 107, 107);
-    }
+    
     .center{
         padding-left:0 ;
         ul{
@@ -32,11 +30,15 @@
                 margin-top: 15px;
                 margin-bottom: 5px;
             }
+            .link{
+                text-decoration: none;
+            }
             li{
                 display: flex;
                 align-items: center;
                 padding: 5px;
                 cursor: pointer;
+                
 
                 &:hover{
                     background-color: #ece8ff;

@@ -2,13 +2,36 @@ import Home from "./pages/home/Home";
 
 import {
   createBrowserRouter,
+  Outlet,
   RouterProvider,
 } from "react-router-dom";
-import List from "./pages/list/List";
+import Sidebar from "./components/sidebar/Sidebar"
 import Login from "./pages/Login/Login";
-import New from "./pages/new/New";
 import Single from "./pages/single/Single";
-import { Children } from "react";
+import Navbar from "./components/navbar/Navbar";
+import DataTable from "./components/Datatable/DataTable";
+import Add from "./components/Add/Add";
+import Products from "./components/Products/Products";
+import "./App.scss"
+
+
+
+
+const Layout = () => {
+  return (
+    <div className='app'>
+      <Sidebar />
+      <div className="navbarlayout">
+        <Navbar className="navar" />
+        <br />
+        <Outlet />
+      </div>
+    </div>
+  )
+}
+
+
+
 function App() {
 
 
@@ -16,39 +39,35 @@ function App() {
   const routes = createBrowserRouter([
     {
       path: "/",
-      element: <Home />,
-      /*Children: [{
-        path: "/Single",
-        element: <Single />
-      },
-      {
-        path: "/Users",
-        element: <List />
-      },
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
 
-      {
-        path: "/order",
-        element: <Single />
-      }
-      ]*/
-    },
-    {
-      path: "/Login",
-      element: <Login />
-    },
-    {
-      path: "/Users",
-      element: <List />
-    },
+        },
+        {
+          path: "/Login",
+          element: <Login />
+        },
+        {
+          path: "/Users",
+          element: <DataTable />
+        },
 
-    {
-      path: "/New",
-      element: <New />
-    },
-    {
-      path: "/Order",
-      element: <Single />
-    },
+        {
+          path: "/Add",
+          element: <Add />
+        },
+        {
+          path: "/Order",
+          element: <Single />
+        },
+        {
+          path: "/Products",
+          element: <Products />
+        },]
+    }
   ])
 
   return (
