@@ -97,7 +97,7 @@ function Checkout() {
                             </span>
                             <div className="round">
                               {" "}
-                              <span className=""> L </span>{" "}
+                              <small className="text-danger fst-italic">New</small>{" "}
                             </div>
                           </div>
                         </td>

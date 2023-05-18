@@ -12,9 +12,11 @@ export const cartSlice = createSlice({
     addToCart: (state, action) => {
       const item = state.products.find((item) => item.id === action.payload.id);
       if (item) {
-        item.quantity += action.payload.quantity;
+        item.number += action.payload.number;
+        state.total += action.payload.number * item.price;
       } else {
         state.products.push(action.payload);
+        state.total += action.payload.number * action.payload.price;
       }
     },
     removeItem: (state, action) => {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import List from "../../components/List/List";
 import useFetch from "../../hooks/useFetch";
@@ -9,7 +9,7 @@ function Products() {
   const [selected, setSelected] = useState([]);
   const [sort, setSort] = useState("asc");
   const { data, loading, error } = useFetch(
-    `/sub-categories?[filters][categories][id][$eq]=${catId}`
+    `/sub-categories?[filters][categories][id][$eq]=${catId}&/products?populate=*`
   );
 
   const handleChange = (e) => {
@@ -84,15 +84,15 @@ function Products() {
         <div className="list" style={{ flex: "3" }}>
           <div className="hbody mb-3">
             <p className="text-center ">Come with us</p>
-            <div class="loop-wrapper">
-              <div class="mountain"></div>
-              <div class="hill"></div>
-              <div class="tree"></div>
-              <div class="tree"></div>
-              <div class="tree"></div>
-              <div class="rock"></div>
-              <div class="truck"></div>
-              <div class="wheels"></div>
+            <div className="loop-wrapper">
+              <div className="mountain"></div>
+              <div className="hill"></div>
+              <div className="tree"></div>
+              <div className="tree"></div>
+              <div className="tree"></div>
+              <div className="rock"></div>
+              <div className="truck"></div>
+              <div className="wheels"></div>
             </div>
           </div>
           <List catId={catId} subCats={selected} sort={sort} />
