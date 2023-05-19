@@ -12,9 +12,17 @@ export const cartSlice = createSlice({
     addToCart: (state, action) => {
       const item = state.products.find((item) => item.id === action.payload.id);
       if (item) {
+<<<<<<< HEAD
         item.quantity += action.payload.quantity;
       } else {
         state.products.push(action.payload);
+=======
+        item.number += action.payload.number;
+        state.total += action.payload.number * item.price;
+      } else {
+        state.products.push(action.payload);
+        state.total += action.payload.number * action.payload.price;
+>>>>>>> 5d980f6467e5b2d570bd5bac4fb2e44aed075a1a
       }
     },
     removeItem: (state, action) => {

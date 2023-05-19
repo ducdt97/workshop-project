@@ -73,7 +73,11 @@ function Product() {
                                 <i className="bi-cart-fill me-1"></i>
                                 Add to cart
                             </button>
+<<<<<<< HEAD
                             <ToastContainer className="position-fixed top-0 end-0 p-3 mt-5">
+=======
+                            <ToastContainer className="position-fixed bottom-0 end-0 p-3 mt-5">
+>>>>>>> 5d980f6467e5b2d570bd5bac4fb2e44aed075a1a
                             <Toast show={show} onClose={toggleShow} bg="dark" delay={3000} autohide>
                               <Toast.Header>
                                 <strong className="me-auto">{data?.attributes?.title}</strong>

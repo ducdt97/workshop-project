@@ -13,6 +13,10 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
+<<<<<<< HEAD
+=======
+    "react-paginate": "^8.2.0",
+>>>>>>> 5d980f6467e5b2d570bd5bac4fb2e44aed075a1a
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
     "react-scripts": "^5.0.1",
