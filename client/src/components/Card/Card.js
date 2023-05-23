@@ -8,7 +8,7 @@ function Card({item}){
               <div className="card h-100">
                 {/* * <!-- Product image--> * */}
                 <img
-                  className="card-img-top h-50"
+                  className="card-img-top" style={{height: "200px"}}
                   src={apiUrl + item.attributes?.img?.data[0]?.attributes?.url}
                   alt="..."
                 />

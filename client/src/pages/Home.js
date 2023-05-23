@@ -24,7 +24,7 @@ function Home() {
 
   return (
     <div className="home mb-4">
-      <div id="carouselExampleCaptions" className="carousel slide">
+      <div id="carouselExampleCaptions" className="carousel slide" data-bs-interval="3000">
         <div className="carousel-indicators">
           {carouselItems.map((item, index) => (
             <button

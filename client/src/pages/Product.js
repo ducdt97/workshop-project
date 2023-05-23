@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux"
 import { addToCart } from "../redux/cartReducer";
 import useFetch from "../hooks/useFetch";
-import { Toast, ToastContainer } from "react-bootstrap";
 
 function Product() {
   const id = useParams().id;
@@ -11,28 +10,29 @@ function Product() {
   const [number, setNumber] = useState(1);
   const [selectedImg, setSelectedImg] = useState(0);
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
-  const toggleShow = () => setShow(!show);
   const {data, loading, error} = useFetch(`/products/${id}?populate=*`);
 
     return (
-        <section className="py-5">
+        <section className="container py-5">
             <div className="d-flex px-4 px-lg-5 my-5">
                 <div className="col p-3 gap-3" style={{flex: "1"}}>
                   <img 
-                    className="btn border w-75 h-150 object-fit-cover pe-auto mb-2"
+                    className="btn border w-75 object-fit-contain pe-auto mb-2"
+                    style={{height: "150px"}}
                     alt="" 
                     src={apiUrl + data?.attributes?.img?.data[0]?.attributes?.url}
                     onClick={() => setSelectedImg(0)}
                   />
                   <img 
-                    className="btn border w-75 h-150 object-fit-cover pe-auto mb-2" 
+                    className="btn border w-75 object-fit-contain pe-auto mb-2"
+                    style={{height: "150px"}} 
                     alt="" 
                     src={apiUrl + data?.attributes?.img?.data[1]?.attributes?.url}
                     onClick={() => setSelectedImg(1)}
                   />
                   <img 
-                    className="btn border w-75 h-150 object-fit-cover pe-auto mb-2"
+                    className="btn border w-75 object-fit-contain pe-auto mb-2"
+                    style={{height: "150px"}}
                     alt=""  
                     src={apiUrl + data?.attributes?.img?.data[2]?.attributes?.url}
                     onClick={() => setSelectedImg(2)}
@@ -67,23 +67,10 @@ function Product() {
                               price: data.attributes.price,
                               img: apiUrl + data.attributes.img.data[selectedImg].attributes.url,
                               number
-                            }))
-                            toggleShow() 
-                            }}>
+                            }))}}>
                                 <i className="bi-cart-fill me-1"></i>
                                 Add to cart
                             </button>
-                            <ToastContainer className="position-fixed bottom-0 end-0 p-3 mt-5">
-                            <Toast show={show} onClose={toggleShow} bg="dark" delay={3000} autohide>
-                              <Toast.Header>
-                                <strong className="me-auto">{data?.attributes?.title}</strong>
-                                <small>just now</small>
-                              </Toast.Header>
-                              <Toast.Body className="text-white">
-                                You have just added a product to cart
-                              </Toast.Body>
-                            </Toast>
-                            </ToastContainer> 
                         </div>
                     </div>
                 </div>

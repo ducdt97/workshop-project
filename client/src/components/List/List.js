@@ -17,7 +17,6 @@ function List({ catId, subCats, sort }) {
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = searchResults.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(searchResults.length / itemsPerPage);
-  console.log(data);
 
   useEffect(() => {
     const filteredItems = data.filter((item) =>
