@@ -83,8 +83,8 @@ function Products() {
         </div>
         <div className="list" style={{ flex: "3" }}>
           <div className="hbody mb-3">
-            <p className="text-center">TMA Innovation Park</p>
-            <p className="text-center">12 Science Avenue, Ghenh Rang, Quy Nhon, Binh Dinh</p>
+            <p className="text-center">Free shipping, 30-day return or refund guarantee</p>
+            <p className="text-center">Visit us: 12 Science Avenue, Ghenh Rang, Quy Nhon, Binh Dinh</p>
             <div className="loop-wrapper">
               <div className="mountain"></div>
               <div className="hill"></div>

@@ -12,7 +12,7 @@ function Navbar() {
     <nav className="sticky-top navbar navbar-expand-lg navbar-light bg-secondary">
       <div className="container px-4 px-lg-5">
         <Link to="/" className="navbar-brand">
-          <i className="bi bi-wordpress"></i>orkshop
+          <h4>Fashion shop</h4>
         </Link>
         <button
           className="navbar-toggler"
