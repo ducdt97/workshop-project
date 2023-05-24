@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./Navbar.scss"
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
@@ -23,7 +23,7 @@ const Navbar = () => {
                 </div>
                 <div className='search'>
 
-                    <input type='text' placeholder='search...' />
+                    <input type='text' placeholder='Search...' />
                     <SearchIcon />
                 </div>
                 <div className='items'>

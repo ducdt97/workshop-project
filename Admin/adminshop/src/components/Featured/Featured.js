@@ -6,7 +6,7 @@ const Featured = () => {
     return (
         <div className='featured'>
             <div className='top'>
-                <h1 className='title'>Total revenue</h1>
+                <h1 className='title'>Total Revenue</h1>
             </div>
             <div className='bottom'>
                 <div className='featuredchart'>
@@ -14,7 +14,7 @@ const Featured = () => {
                 </div>
                 <p className='title'> Total sales made today</p>
                 <p className='amount'> $420</p>
-                <p className='decs'> phan tram ngay </p>
+                <p className='decs'> Percent </p>
             </div>
         </div>
     )

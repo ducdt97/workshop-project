@@ -8,10 +8,11 @@ const Single = () => {
     return (
         <div className='single'>
             <div className='singlecontainer'>
-                <div className='Bottom'>
+                {/* <div className='Bottom'>
                     <div className='title'>last transactions</div>
-                    <Tables />
-                </div>
+                    
+                </div> */}
+                <Tables />
                 <div className='growthChart'>
                     <Chart aspect={3 / 1} />
                 </div>

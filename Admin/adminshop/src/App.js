@@ -10,9 +10,12 @@ import Login from "./pages/Login/Login";
 import Single from "./pages/single/Single";
 import Navbar from "./components/navbar/Navbar";
 import DataTable from "./components/Datatable/DataTable";
-import Add from "./components/Add/Add";
+import Edit from "./components/Edit/Edit";
 import Products from "./components/Products/Products";
 import "./App.scss"
+import AddProduct from "./components/Add/AddProduct";
+import AddUser from "./components/Add/AddUser";
+import EditUser from "./components/Edit/EditUser"
 
 
 
@@ -38,6 +41,7 @@ function App() {
 
   const routes = createBrowserRouter([
     {
+
       path: "/",
       element: <Layout />,
       children: [
@@ -56,8 +60,12 @@ function App() {
         },
 
         {
-          path: "/Add",
-          element: <Add />
+          path: "/AddUser",
+          element: <AddUser />
+        },
+        {
+          path: "/AddProduct",
+          element: <AddProduct />
         },
         {
           path: "/Order",
@@ -66,7 +74,16 @@ function App() {
         {
           path: "/Products",
           element: <Products />
-        },]
+        },
+        {
+          path: "/edit/:id",
+          element: <Edit />
+        },
+        {
+          path: "/edituser/:id",
+          element: <EditUser />
+        },
+      ]
     }
   ])
 

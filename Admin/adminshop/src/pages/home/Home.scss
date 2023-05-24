@@ -2,6 +2,13 @@
    display:  flex; 
    .homecontainer{
     flex: 6;
+    .title{
+      font-size: 40px;
+      color: black;
+      padding: 20px;
+      font-weight: bold;
+   
+    }
     .widgets, .charts{
       display: flex;
       padding: 20px;

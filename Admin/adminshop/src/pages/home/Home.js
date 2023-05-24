@@ -10,22 +10,24 @@ const Home = () => {
         <div className='home'>
             <div className='homecontainer'>
                 <br />
-                home container
+                <span className='title'> Dashboard </span>
                 <div className='widgets'>
-                    <Widget />
-                    <Widget />
-                    <Widget />
+                    <Widget type="user" />
+                    <Widget type="order" />
+                    <Widget type="earning" />
+
                 </div>
                 <div className='charts'>
                     <Featured />
                     <Chart />
                 </div>
-                <div className='listContainer'>
+                {/* <div className='listContainer'>
                     <div className='listtitle'>
                         listtitle
                     </div>
-                    <Tables />
-                </div>
+                    
+                </div> */}
+                <Tables />
             </div>
         </div>
     )

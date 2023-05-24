@@ -4,18 +4,6 @@ import img1 from "../../images/5.webp"
 import "./Categories.css"
 
 function Categories() {
-<<<<<<< HEAD
-  return (
-    <div className="categories">
-      <div className="col1">
-        <img className="img1" src={img} alt="" />
-        <Link to="/products/1" className="btn btn1">Men</Link>
-      </div>
-      <div className="col1">
-        <img className="img1" src={img1} alt="" />
-        <Link to="/products/2" className="btn btn1">Woman</Link>
-      </div>
-=======
   const cateList = [
     {
       title: "Men",
@@ -37,7 +25,6 @@ function Categories() {
         <Link to={item.link} className="btn btn1">{item.title}</Link>
       </div>
       ))}
->>>>>>> 5d980f6467e5b2d570bd5bac4fb2e44aed075a1a
     </div>
   );
 }

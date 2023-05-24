@@ -5,6 +5,7 @@
     align-items: center;
     font-size: 14px;
     color: #555;
+    background-color: transparent;
 
     .wrapper{
         width: 100%;
@@ -20,9 +21,11 @@
             border: 0.5px solid lightgray;
             padding: 3px;
             
+            
 
             & ::placeholder{
                 font-size: 12px;
+                font-weight: bold;
             }
 
 

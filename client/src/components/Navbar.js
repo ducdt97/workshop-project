@@ -9,11 +9,7 @@ function Navbar() {
   const products = useSelector(state => state.cart.products)
 
   return (
-<<<<<<< HEAD
-    <nav className="sticky-top navbar navbar-expand-lg navbar-light bg-light">
-=======
     <nav className="sticky-top navbar navbar-expand-lg navbar-light bg-secondary">
->>>>>>> 5d980f6467e5b2d570bd5bac4fb2e44aed075a1a
       <div className="container px-4 px-lg-5">
         <Link to="/" className="navbar-brand">
           <i className="bi bi-wordpress"></i>orkshop
