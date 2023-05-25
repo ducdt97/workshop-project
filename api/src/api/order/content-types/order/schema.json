@@ -12,37 +12,20 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
-      "type": "string"
-    },
-    "img": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "desc": {
-      "type": "string"
-    },
-    "size": {
-      "type": "string"
-    },
-    "price": {
-      "type": "string"
-    },
-    "quantity": {
-      "type": "string"
-    },
-    "customer": {
-      "type": "string"
+    "email": {
+      "type": "email"
     },
     "phone": {
-      "type": "integer"
+      "type": "biginteger"
+    },
+    "address": {
+      "type": "string"
+    },
+    "card": {
+      "type": "string"
+    },
+    "cartProducts": {
+      "type": "json"
     }
   }
 }
