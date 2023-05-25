@@ -51,7 +51,7 @@ function Login(props) {
                         <span style={{ fontWeight: '500' }}>
                             Don't have an account?
                         </span>
-                        <Link style={{ fontWeight: '500' }} to='/registration'>Sign Up</Link>
+                        <Link style={{ fontWeight: '500' }} to='/Registration'>Sign Up</Link>
                     </div>
                 </div>
             </Col>
