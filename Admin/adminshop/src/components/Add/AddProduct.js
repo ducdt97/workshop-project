@@ -1,12 +1,6 @@
 import React, { useState } from 'react'
 import "./AddProduct.scss"
 import AddIcon from '@mui/icons-material/Add';
-import { createSelector } from '@reduxjs/toolkit';
-
-export const selectCartProducts = createSelector(
-    state => state.product.products,
-    products => products,
-);
 
 const AddProduct = () => {
     const http = ("http://localhost:1337")

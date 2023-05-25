@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import "./AddUser.scss"
-
 import AddIcon from '@mui/icons-material/Add';
+
+
+
+
+
 const AddUser = () => {
     const [Avatar, setAvatar] = useState()
     const [name, setName] = useState("")

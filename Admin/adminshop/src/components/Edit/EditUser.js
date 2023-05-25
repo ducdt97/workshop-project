@@ -41,28 +41,35 @@ const Edit = () => {
   }, [id]);
   console.log(avatar)
 
-  const handleSubmit = () => {
-    const requestData = {
-      data: {
-        id: id,
-        attributes: {
-          name: name,
-          avatar: avatar,
-          email: email,
-          password: password,
-        }
-      },
-      meta: {}
-    };
-    axios.put(`http://localhost:1337/api/admins/${id}?populate=*`, { requestData })
-      .then(response => {
-        console.log('Product updated successfully');
-      })
-      .catch(error => {
-        console.error(error);
+  const handleSubmit = async () => {
+    try {
+      console.log(id)
+      const response = await fetch(`http://localhost:1337/api/Admins/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          data: {
+            name: name,
+            email: email,
+            password: password,
+          }
+        })
       });
-  };
+      console.log('Product updated successfully');
 
+      if (response.ok) {
+        console.log('Product updated successfully');
+        // Perform any additional actions upon successful update
+      } else {
+        throw new Error('Failed to update product');
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle the error appropriately
+    }
+  };
   // 
   const hanldAvatar = (e) => {
     const imager = (e.target.files[0])

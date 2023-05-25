@@ -1,0 +1,31 @@
+.login {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sub-login {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+    position: absolute;
+    top: 50%;
+    left: 17%;
+    transform: translate(-50%, -50%);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .to-register {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .to-register a {
+    margin-left: 5px;
+    color: #007bff;
+  }

@@ -1,0 +1,57 @@
+.ratings-container {
+    margin: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  .rating {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .rating p {
+    margin: 0;
+  }
+  
+  .rating-stars {
+    color: #ffc107;
+    margin-bottom: 10px;
+  }
+  
+  .rating-stars .selected {
+    color: #ff9800;
+  }
+  
+  .add-rating {
+    margin-bottom: auto;
+    margin-top: 20px;
+  }
+  
+  .add-rating textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .add-rating button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .add-rating button:hover {
+    background-color: #3e8e41;
+  }
+  
+  .rating-user {
+    font-weight: bold;
+  }
+  
+  .rating-date {
+    margin-left: 10px;
+  }
