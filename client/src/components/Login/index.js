@@ -40,12 +40,12 @@ function Login(props) {
                     <h2>Sign in</h2>
                     <Form>
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                            <Form.Control className="custom-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
                         </Form.Group>
                         <Form.Group controlId="formBasicPassword">
-                            <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                            <Form.Control className="custom-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
                         </Form.Group>
-                        <Button variant="primary" onClick={handleLogin}>Login</Button>
+                        <Button className="custom-button" variant="primary" onClick={handleLogin}>Login</Button>
                     </Form>
                     <div className='to-register'>
                         <span style={{ fontWeight: '500' }}>

@@ -1,31 +1,71 @@
+/* style.css */
+
 .login {
     height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
   }
   
   .sub-login {
-    background-color: #ffffff;
-    padding: 20px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
-    position: absolute;
-    top: 50%;
-    left: 17%;
-    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    margin-top: -200px;
+    margin-right: 330px;
   }
   
   h2 {
-    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  
+  .form-group {
     margin-bottom: 20px;
   }
   
-  .to-register {
-    text-align: center;
+  .custom-input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  .custom-button {
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    border: none;
     margin-top: 20px;
+    color: #fff;
+  }
+  
+  .custom-button:hover {
+    background-color: #0069d9;
+    cursor: pointer;
+  }
+  
+  .to-register {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .to-register span {
+    font-size: 16px;
+    color: #666;
+    margin-right: 5px;
   }
   
   .to-register a {
-    margin-left: 5px;
+    font-size: 16px;
     color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
   }
+  

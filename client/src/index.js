@@ -15,6 +15,7 @@ import { Provider } from "react-redux";
 import Checkout from "./pages/Checkout/Checkout";
 import Login from "./components/Login/index";
 import Registration from "./components/Registration";
+import Ratings from "./components/Rating";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -30,6 +31,7 @@ root.render(
           <Route path="checkout" element={<Checkout/>} />
           <Route path="login" element={<Login/>}/>
           <Route path="Registration" element={<Registration/>}/>
+          <Route path="rating" element={<Ratings/>} />
         </Route>
       </Routes>
     </BrowserRouter>
