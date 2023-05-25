@@ -23,7 +23,9 @@ const Tables = () => {
     useEffect(() => {
         axios.get('http://localhost:1337/api/orders?populate=*')
             .then(res => {
-                setOrders(res.data)
+                setOrders(res.data);
+
+
             })
             .catch(error => {
                 console.error(error);
@@ -45,16 +47,18 @@ const Tables = () => {
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
-                        <TableRow>
-                            <TableCell className="tablecell">id</TableCell>
-                            <TableCell className="tablecell">name</TableCell>
-                            <TableCell className='tablevell'>img</TableCell>
-                            <TableCell className="tablecell">customer</TableCell>
+                        <TableRow className='tables'>
+
+                            <TableCell className="tablecell">Email address</TableCell>
                             <TableCell className="tablecell">phone</TableCell>
-                            <TableCell className="tablecell">description</TableCell>
-                            <TableCell className="tablecell">size</TableCell>
+                            <TableCell className="tablecell">Address</TableCell>
+                            <TableCell className="tablecell">card details</TableCell>
+                            <TableCell className='tablecell'>title</TableCell>
+                            <TableCell className='tablecell'>image</TableCell>
                             <TableCell className="tablecell">price</TableCell>
                             <TableCell className="tablecell">quantity</TableCell>
+
+
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -68,16 +72,25 @@ const Tables = () => {
                                 <TableRow
                                     key={order.id}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                    className='tables'
                                 >
-                                    <TableCell>{order.id}</TableCell>
-                                    <TableCell className="table">{order.attributes.name}</TableCell>
-                                    <TableCell className='tablecell'><img src={http + order?.attributes?.img?.data[0]?.attributes?.url} /></TableCell>
-                                    <TableCell className="tablecell">{order.attributes.customer}</TableCell>
-                                    <TableCell className="tablecell">{"0" + order.attributes.phone}</TableCell>
-                                    <TableCell className="tablecell">{order.attributes.desc}</TableCell>
-                                    <TableCell className="tablecell">{order.attributes.size}</TableCell>
-                                    <TableCell className="tablecell">{"$" + order.attributes.price}</TableCell>
-                                    <TableCell className="tablecell">{order.attributes.quantity}</TableCell>
+
+                                    <TableCell className="tablecell">{order.attributes.email}</TableCell>
+                                    <TableCell className="tablecell">{order.attributes.phone}</TableCell>
+                                    <TableCell className="tablecell">{order.attributes.address}</TableCell>
+                                    <TableCell className="tablecell">{order.attributes.card}</TableCell>
+
+                                    {order.attributes?.cartProducts?.map((cartProduct) => (
+                                        <>
+                                            <TableCell className='tablecell'>{cartProduct.title}</TableCell>
+                                            <TableCell className='tablecell'><img src={cartProduct.img} /></TableCell>
+                                            <TableCell className="tablecell">{"$" + cartProduct.price}</TableCell>
+                                            <TableCell className="tablecell">{cartProduct.number}</TableCell>
+                                        </>
+
+                                    ))}
+
+
                                 </TableRow>
                             ))
                         ) : (
