@@ -31,7 +31,7 @@ function Products() {
               {" "}
               Product Categories
             </h3>
-            {data?.map((item) => (
+            {data.map((item) => (
               <div className="form-check" key={item.id}>
                 <input
                   className="form-check-input"
@@ -83,7 +83,8 @@ function Products() {
         </div>
         <div className="list" style={{ flex: "3" }}>
           <div className="hbody mb-3">
-            <p className="text-center ">Come with us</p>
+            <p className="text-center">Free shipping, 30-day return or refund guarantee</p>
+            <p className="text-center">Visit us: 12 Science Avenue, Ghenh Rang, Quy Nhon, Binh Dinh</p>
             <div className="loop-wrapper">
               <div className="mountain"></div>
               <div className="hill"></div>

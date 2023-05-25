@@ -1,0 +1,14 @@
+.head {
+    position: relative;
+    width: 100%;
+  }
+  
+  .banner {
+    width: 100%;
+  }
+  
+  .banner-image {
+    width: 100%;
+    justify-content: center;
+    height: auto;
+  }
