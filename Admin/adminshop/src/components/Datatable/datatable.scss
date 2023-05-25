@@ -1,0 +1,11 @@
+.Bottom { 
+    -webkit-box-shadow: -1px 0px 10px -6px rgba(0,0,0,0.53); 
+   box-shadow: -1px 0px 10px -6px rgba(0,0,0,0.53);
+   padding: 20px;
+   margin:20px ;
+   .title{
+       font-size: 16px;
+       color: lightgray;
+       margin-bottom: 20px;
+   }  
+}

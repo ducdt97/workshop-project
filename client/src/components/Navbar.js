@@ -1,12 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Cart from "./Cart/Cart";
+import { Collapse, Navbar, Nav, NavItem, NavLink } from 'reactstrap';
 
 
-function Navbar() {
+function CustumNavbar() {
   const [open, setOpen] = useState(false);
   const products = useSelector(state => state.cart.products)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
+
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    const storedUserName = localStorage.getItem('userName');
+    if (userId) {
+      setIsLoggedIn(true);
+      setUserName(storedUserName);
+    }
+  }, []);
+
+  const toggle = () => setOpen(!open);
+
+  const handleLogout = () => {
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userName');
+    setIsLoggedIn(false);
+    setUserName('');
+  };
 
   return (
     <nav className="sticky-top navbar navbar-expand-lg navbar-light bg-secondary">
@@ -51,6 +73,26 @@ function Navbar() {
                 Women
               </Link>
             </li>
+            <Collapse open={open} navbar>
+              <Nav navbar>
+                {isLoggedIn ? (
+                  <>
+                    <NavItem>
+                      <NavLink href="/rating">Rating</NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink href="/logout" onClick={handleLogout}>
+                        {userName}
+                      </NavLink>
+                    </NavItem>
+                  </>
+                ) : (
+                  <NavItem>
+                    <NavLink href="/login">Login</NavLink>
+                  </NavItem>
+                )}
+              </Nav>
+            </Collapse>
           </ul>
           <button
             className="btn btn-outline-dark"
@@ -67,4 +109,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default CustumNavbar;
