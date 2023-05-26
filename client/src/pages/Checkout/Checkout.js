@@ -2,7 +2,9 @@ import { useState } from "react";
 import { selectCartProducts } from "../../components/Cart/Cart";
 import "./Checkout.css";
 import { useSelector } from "react-redux";
-import validator from "validator"
+import validator from "validator";
+import axios from "axios";
+import { toast } from 'react-toastify';
 
 function Checkout() {
   const cartProducts = useSelector(selectCartProducts);
@@ -12,6 +14,8 @@ function Checkout() {
   const [mailMessage, setMailMessage] = useState("");
   const [phoneMessage, setPhoneMessage] = useState("");
   const [isValid, setIsValid] = useState(false);
+  const [card, setCard] = useState("");
+  const [address, setAddress] = useState("");
 
   const validateEmail = (e) => {
     setEmail(e.target.value);
@@ -35,8 +39,26 @@ function Checkout() {
     }
   };
 
-  const handleSubmit = (e) => {
-    alert("Payment success !")
+  const handleSubmit = async (e) => {
+    try {
+      const response = await axios.post("http://localhost:1337/api/orders", {
+        data: {
+          email: email,
+          phone: phone,
+          address: address,
+          card: card,
+          cartProducts: cartProducts,
+        },
+      });
+  
+      if (response.status === 200) {
+        toast.success("payment success")
+      } else {
+        toast.error("payment failed")
+      }
+    } catch (error) {
+      toast.error(error);
+    }
   };
 
   return (
@@ -123,6 +145,7 @@ function Checkout() {
                   className="form-control"
                   type="email"
                   id="userEmail"
+                  value={email}
                   onChange={(e) => validateEmail(e)}
                   placeholder="name@email.com"
                 />
@@ -139,20 +162,9 @@ function Checkout() {
                     type="text"
                     className="form-control"
                     placeholder="Card Details"
+                    value={card}
+                    onChange={(e) => setCard(e.target.value)}
                   />
-                  <div className="d-flex w-50">
-                    <input
-                      type="text"
-                      className="form-control px-0"
-                      placeholder="MM/YY"
-                    />
-                    <input
-                      type="password"
-                      maxlength={3}
-                      className="form-control px-0"
-                      placeholder="CVV"
-                    />
-                  </div>
                 </div>
                 <div className="my-3 cardname">
                   <p className="dis fw-bold mb-2">Phone number</p>
@@ -160,6 +172,7 @@ function Checkout() {
                   className="form-control" 
                   type="number" 
                   placeholder="type your phone number..."
+                  value={phone}
                   onChange={(e) => validatePhone(e)}
                   />
                   <span className="text-danger">
@@ -173,6 +186,8 @@ function Checkout() {
                       className="form-control state"
                       type="text"
                       placeholder="type your address..."
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
                     />
                   </div>
                   <div className=" my-3">

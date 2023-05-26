@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Cart from "./Cart/Cart";
 
-function CustomNavbar() {
+function Navbar() {
   const [open, setOpen] = useState(false);
   const products = useSelector(state => state.cart.products)
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -99,4 +99,4 @@ function CustomNavbar() {
   );
 }
 
-export default CustomNavbar;
+export default Navbar;

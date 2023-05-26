@@ -1,10 +1,11 @@
-import img from "../../images/3.png";
+import img from "../../images/9.png";
+import "./Header.css"
 
 function Header() {
     return (
-      <header className="head hbody">
+      <header className="head">
           <div className="banner">
-              <img src={img} style={{width: "1520px"}}/>
+              <img src={img} className="banner-image"/>
           </div>
       </header>
     )

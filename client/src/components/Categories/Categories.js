@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import img from "../../images/4.webp"
-import img1 from "../../images/5.webp"
+import img from "../../images/10.webp"
+import img1 from "../../images/11.webp"
 import "./Categories.css"
 
 function Categories() {

@@ -38,7 +38,7 @@ const Ratings = () => {
         };
         fetchData();
     }, []);
-    
+
     useEffect(() => {
         const fetchUserNames = async () => {
             const names = {};
@@ -85,7 +85,7 @@ const Ratings = () => {
             message.error('Please fill out all rating information');
             return;
         }
-    
+
         const response = await fetch('http://localhost:1337/api/ratings', {
             method: 'POST',
             headers: {
@@ -103,7 +103,6 @@ const Ratings = () => {
         message.success('Rating successfully')
         const newRatingData = data.data;
         setRatedUserIds([...ratedUserIds, userId]);
-    
         // Add the new rating to the beginning of the ratings list
         setRatings((prevRatings) => [newRatingData, ...prevRatings]);
     
@@ -169,10 +168,8 @@ const Ratings = () => {
         });
         const data = await response.json();
         message.success('Delete rating successfully.')
-    
         // Remove the deleted rating from the ratings list
         setRatings((prevRatings) => prevRatings.filter((rating) => rating.id !== ratingId));
-    
         // Add the deleted rating's userId to ratedUserIds
         const deletedRating = ratings.find((rating) => rating.id === ratingId);
         setRatedUserIds((prevRatedUserIds) => prevRatedUserIds.filter((userId) => userId !== deletedRating.attributes.userId));
@@ -215,7 +212,6 @@ const Ratings = () => {
         :
         ''
 }
-
                         </>
                     )}
                 </div>

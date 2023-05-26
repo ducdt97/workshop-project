@@ -5,10 +5,11 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
 import "bootstrap-icons/font/bootstrap-icons.css"
+import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Products from "./pages/Products/Products";
 import Product from "./pages/Product";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";

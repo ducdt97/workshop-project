@@ -1,0 +1,30 @@
+.table{
+   
+    .images{
+        display: flex;
+        align-items: center;
+
+        .image{
+            width: 70px;
+            height:70px;
+            border-radius: 20%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+    }
+}
+.tablecell{
+    display: flex;
+    align-items: center;
+    gap:15px;
+ 
+    img{
+        width: 70px;
+        height:70px;
+        border-radius: 20%;
+        margin-right: 10px;
+        object-fit: cover;
+    }
+
+  
+}

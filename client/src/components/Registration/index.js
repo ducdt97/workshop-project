@@ -23,7 +23,6 @@ function Registration() {
         const emailFormat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
         if (!emailFormat.test(email)) {
             message.error("Please enter a valid email address.")
-           
             return;
         }
         if (password.length < 8) {
@@ -35,7 +34,7 @@ function Registration() {
             return;
         }
         try {
-            const response = await fetch('http://localhost:1337/api/resgisters', {
+            const response = await fetch('http://localhost:1337/api/accounts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

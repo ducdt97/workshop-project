@@ -18,9 +18,9 @@ function Login(props) {
     const navigate = useNavigate();
 
     const handleLogin = () => {
-        axios.get('http://localhost:1337/api/resgisters')
+        axios.get('http://localhost:1337/api/accounts')
             .then(response => {
-                const users =response.data.data;
+                const users = response.data.data;
                 const user = users.find(user => user.attributes.email === email && user.attributes.password === password);
                 if (user) {
                     localStorage.setItem('userName', user.attributes.name);

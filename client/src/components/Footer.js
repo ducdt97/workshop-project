@@ -56,7 +56,7 @@ function Footer() {
 
       <div className="text-center p-3 bg-black">
         © 2023 Copyright:
-        <span> Workshop</span>
+        <span> Fashionshop</span>
       </div>
     </footer>
   );
