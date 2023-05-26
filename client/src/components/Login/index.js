@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import {
+    Form,
+    Button,
     Col,
     Row,
-    Button,
-    FormGroup,
-    Input,
-} from 'reactstrap';
+} from 'react-bootstrap';
 import axios from 'axios';
-import './style.css'
-
-
+import './style.css';
 import { Link, useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Login(props) {
     const [email, setEmail] = useState("");
@@ -37,22 +35,23 @@ function Login(props) {
     };
     return (
         <Row className="login">
-            <Col className='sub-login' sm='9' md={{ size: 4, offset: 4 }}>
+            <Col className='sub-login' sm='9' md={{ span: 4, offset: 4}}>
                 <div >
                     <h2>Sign in</h2>
-                    <FormGroup row>
-                        <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-                    </FormGroup>
-                    <FormGroup row>
-                        <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Mật khẩu" />
-                    </FormGroup>
-                    <Button color="primary" onClick={handleLogin}>Đăng nhập</Button>
-
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Control className="custom-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Control className="custom-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                        </Form.Group>
+                        <Button className="custom-button" variant="primary" onClick={handleLogin}>Login</Button>
+                    </Form>
                     <div className='to-register'>
                         <span style={{ fontWeight: '500' }}>
                             Don't have an account?
                         </span>
-                        <Link style={{ fontWeight: '500' }} to='/registration'>Sign Up</Link>
+                        <Link style={{ fontWeight: '500' }} to='/Registration'>Sign Up</Link>
                     </div>
                 </div>
             </Col>

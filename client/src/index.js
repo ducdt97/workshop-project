@@ -14,7 +14,7 @@ import About from "./pages/About/About";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import Checkout from "./pages/Checkout/Checkout";
-import Login from "./components/Login";
+import Login from "./components/Login/index";
 import Registration from "./components/Registration";
 import Ratings from "./components/Rating";
 
@@ -22,20 +22,20 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route path="products/:id" element={<Products />} />
-            <Route path="product/:id" element={<Product />} />
-            <Route path="about" element={<About />} />
-            <Route index element={<Home />} />
-            <Route path="checkout" element={<Checkout />} />
-            <Route path="login" element={<Login />} />
-            <Route path="registration" element={<Registration />} />
-            <Route path="rating" element={<Ratings />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route path="products/:id" element={<Products />} />
+          <Route path="product/:id" element={<Product />} />
+          <Route path="about" element={<About/>} />
+          <Route index element={<Home />} />
+          <Route path="checkout" element={<Checkout/>} />
+          <Route path="login" element={<Login/>}/>
+          <Route path="Registration" element={<Registration/>}/>
+          <Route path="rating" element={<Ratings/>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );

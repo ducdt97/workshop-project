@@ -7,7 +7,6 @@ import { format } from 'date-fns';
 import getUserById from '../../contexts/auth';
 import { message } from 'antd'
 
-
 const Ratings = () => {
     const [ratings, setRatings] = useState([]);
     const [userNames, setUserNames] = useState({});
@@ -73,15 +72,15 @@ const Ratings = () => {
     const handleAddRating = async () => {
         const userId = localStorage.getItem('userId');
         if (!userId) {
-            message.error('User ID not found in localStorage');
+            message.error('You are not logged in');
             return;
         }
-
+    
         if (ratedUserIds.includes(userId)) {
-            message.error('Bạn đã đánh giá rồi!');
+            message.error('You have already rated it!');
             return;
         }
-
+    
         if (newRating.rating === 0 || newRating.comment === '') {
             message.error('Please fill out all rating information');
             return;
@@ -104,10 +103,9 @@ const Ratings = () => {
         message.success('Rating successfully')
         const newRatingData = data.data;
         setRatedUserIds([...ratedUserIds, userId]);
-
         // Add the new rating to the beginning of the ratings list
         setRatings((prevRatings) => [newRatingData, ...prevRatings]);
-
+    
         setNewRating({ rating: 0, comment: '' });
     };
 
@@ -126,7 +124,7 @@ const Ratings = () => {
         });
     };
 
-    const handleUpdatedRatingChange = (rating) => {
+    const handleUpdatedRatingChange = (rating) =>{
         setUpdatedRating((prevRating) => ({ ...prevRating, rating }));
     };
 
@@ -170,10 +168,8 @@ const Ratings = () => {
         });
         const data = await response.json();
         message.success('Delete rating successfully.')
-
         // Remove the deleted rating from the ratings list
         setRatings((prevRatings) => prevRatings.filter((rating) => rating.id !== ratingId));
-
         // Add the deleted rating's userId to ratedUserIds
         const deletedRating = ratings.find((rating) => rating.id === ratingId);
         setRatedUserIds((prevRatedUserIds) => prevRatedUserIds.filter((userId) => userId !== deletedRating.attributes.userId));
@@ -208,15 +204,14 @@ const Ratings = () => {
                             <p>Comment: {rating.attributes.comment}</p>
                             <p>Created at: {format(new Date(rating.attributes.createdAt), 'yyyy-MM-dd')}</p>
                             {
-                                (rating.attributes.userId === userId) ?
-                                    <>
-                                        <button onClick={() => handleUpdateRating(rating.id)}>Update</button>
-                                        <button onClick={() => handleDeleteRating(rating.id)}>Delete</button>
-                                    </>
-                                    :
-                                    ''
-                            }
-
+    (rating.attributes.userId === userId) ?
+        <>
+            <button onClick={() => handleUpdateRating(rating.id)}>Update</button>
+            <button onClick={() => handleDeleteRating(rating.id)}>Delete</button>
+        </>
+        :
+        ''
+}
                         </>
                     )}
                 </div>
@@ -225,7 +220,7 @@ const Ratings = () => {
             <div className="add-rating">
                 <h3>Add Rating</h3>
                 <div className="rating-stars">
-                    {[1, 2, 3, 4, 5].map((rating) => (
+                    {[1,2, 3, 4, 5].map((rating) => (
                         <FontAwesomeIcon
                             icon={faStar}
                             key={rating}

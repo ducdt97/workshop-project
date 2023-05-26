@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import {
+    Form,
+    Button,
     Col,
     Row,
-    Button,
-    FormGroup,
-    Input,
-} from 'reactstrap';
+} from 'react-bootstrap';
 import { useNavigate } from "react-router-dom"
 import { message } from 'antd';
 import './style.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Registration() {
     const history = useNavigate();
@@ -18,12 +18,11 @@ function Registration() {
     const [confirmPassword, setConfirmPassword] = useState("")
     const [passwordError, setPasswordError] = useState("")
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e)=> {
         e.preventDefault();
         const emailFormat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
         if (!emailFormat.test(email)) {
             message.error("Please enter a valid email address.")
-
             return;
         }
         if (password.length < 8) {
@@ -71,23 +70,25 @@ function Registration() {
 
     return (
         <Row className="register"  >
-            <Col className='sub-register' sm='12' md={{ size: 4, offset: 4 }}>
+            <Col className='sub-register'  sm='12' md={{ span: 4, offset: 4 }}>
                 <div>
                     <h2>Sign Up</h2>
-                    <FormGroup row>
-                        <Input type='text' placeholder='Please enter your name' required onChange={(e) => setName(e.target.value)} />
-                    </FormGroup>
-                    <FormGroup row>
-                        <Input type='email' placeholder='Please enter your email' required onChange={(e) => setEmail(e.target.value)} />
-                    </FormGroup>
-                    <FormGroup row>
-                        <Input type="password" name="password" value={password} placeholder='Please enter password' required onChange={(e) => setPassword(e.target.value)} />
-                        {passwordError && <div className="error">{passwordError}</div>}
-                    </FormGroup>
-                    <FormGroup row>
-                        <Input type="password" name="confirmPassword" value={confirmPassword} placeholder='Please reenter your password' required onChange={(e) => setConfirmPassword(e.target.value)} />
-                    </FormGroup>
-                    <Button color='primary' onClick={handleSubmit}>Login</Button>
+                    <Form>
+                        <Form.Group controlId="formBasicName">
+                            <Form.Control type='text' placeholder='Please enter your name' required onChange={(e) => setName(e.target.value)} />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Control type='email' placeholder='Please enter your email' required onChange={(e) => setEmail(e.target.value)} />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Control type="password"name="password" value={password} placeholder='Please enter password' required onChange={(e) => setPassword(e.target.value)} />
+                            {passwordError && <div className="error">{passwordError}</div>}
+                        </Form.Group>
+                        <Form.Group controlId="formBasicConfirmPassword">
+                            <Form.Control type="password" name="confirmPassword" value={confirmPassword} placeholder='Please reenter your password' required onChange={(e) => setConfirmPassword(e.target.value)} />
+                        </Form.Group>
+                        <Button variant='primary' onClick={handleSubmit}>Sign Up</Button>
+                    </Form>
                 </div>
             </Col>
         </Row>
