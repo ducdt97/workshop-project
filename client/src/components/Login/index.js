@@ -23,7 +23,6 @@ function Login(props) {
                 const users = response.data.data;
                 const user = users.find(user => user.attributes.email === email && user.attributes.password === password);
                 if (user) {
-                    localStorage.setItem('userName', user.attributes.name);
                     localStorage.setItem('userId', user.id);
                     navigate('/')
                 } else {
@@ -39,10 +38,10 @@ function Login(props) {
                 <div >
                     <h2>Sign in</h2>
                     <Form>
-                        <Form.Group controlId="formBasicEmail">
+                        <Form.Group controlId="formBasicEmail" className='m-3'>
                             <Form.Control className="custom-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
                         </Form.Group>
-                        <Form.Group controlId="formBasicPassword">
+                        <Form.Group controlId="formBasicPassword" className='m-3'>
                             <Form.Control className="custom-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
                         </Form.Group>
                         <Button className="custom-button" variant="primary" onClick={handleLogin}>Login</Button>

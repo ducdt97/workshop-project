@@ -22,7 +22,7 @@ const Edit = () => {
 
   useEffect(() => {
     // Fetch the product data based on the ID
-    axios.get(`${http}/api/admins/${id}?populate=*`)
+    axios.get(`${http}/api/accounts/${id}?populate=*`)
       .then(response => {
         const register = response.data.data;
         // setFormData({

@@ -74,20 +74,20 @@ function Registration() {
                 <div>
                     <h2>Sign Up</h2>
                     <Form>
-                        <Form.Group controlId="formBasicName">
+                        <Form.Group controlId="formBasicName" className="m-3">
                             <Form.Control type='text' placeholder='Please enter your name' required onChange={(e) => setName(e.target.value)} />
                         </Form.Group>
-                        <Form.Group controlId="formBasicEmail">
+                        <Form.Group controlId="formBasicEmail" className="m-3">
                             <Form.Control type='email' placeholder='Please enter your email' required onChange={(e) => setEmail(e.target.value)} />
                         </Form.Group>
-                        <Form.Group controlId="formBasicPassword">
+                        <Form.Group controlId="formBasicPassword" className="m-3">
                             <Form.Control type="password"name="password" value={password} placeholder='Please enter password' required onChange={(e) => setPassword(e.target.value)} />
                             {passwordError && <div className="error">{passwordError}</div>}
                         </Form.Group>
-                        <Form.Group controlId="formBasicConfirmPassword">
+                        <Form.Group controlId="formBasicConfirmPassword" className="m-3">
                             <Form.Control type="password" name="confirmPassword" value={confirmPassword} placeholder='Please reenter your password' required onChange={(e) => setConfirmPassword(e.target.value)} />
                         </Form.Group>
-                        <Button variant='primary' onClick={handleSubmit}>Sign Up</Button>
+                        <Button variant='primary' className='custom-button' onClick={handleSubmit}>Sign Up</Button>
                     </Form>
                 </div>
             </Col>

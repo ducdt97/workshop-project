@@ -11,7 +11,7 @@ export const selectCartProducts = createSelector(
   products => products.map(item => ({ ...item, img: item.img })),
 );
 
-function Cart({onClose}) {
+function Cart({onClose, isLoggedIn}) {
   const products = useSelector(state => state.cart.products)
   const total = useSelector(state => state.cart.total);
   const dispatch = useDispatch();
@@ -57,7 +57,7 @@ function Cart({onClose}) {
             <span>${total}</span>
           </div>
           <div className="d-flex flex-column gap-2">
-            <Link to="/checkout" className="btn btn-primary mt-auto" onClick={onClose}>Checkout</Link>
+            {isLoggedIn ? <Link to="/checkout" className="btn btn-primary mt-auto" onClick={onClose}>Checkout</Link> : <span className="text-center">You are not logged in<Link to="/login" className=""> Login</Link></span>}
             <span className="reset" onClick={() => dispatch(resetCart())}>Reset Cart</span>
           </div>
         </>
