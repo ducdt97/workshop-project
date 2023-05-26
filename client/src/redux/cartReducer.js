@@ -42,7 +42,7 @@ export const cartSlice = createSlice({
         state.total -= removedItem.number * removedItem.price;
         toast.success("Remove success");
       }
-    },
+    },  
 
     resetCart: (state) => {
       state.products = [];

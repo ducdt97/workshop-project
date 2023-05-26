@@ -77,7 +77,7 @@ const DataTable = () => {
         }
     };
     useEffect(() => {
-        axios.get('http://localhost:1337/api/admins?populate=*')
+        axios.get('http://localhost:1337/api/accounts?populate=*')
             .then(res => {
                 // const register = res.data.data
                 // const newRegisters = register.map((item) => ({
@@ -112,7 +112,7 @@ const DataTable = () => {
     const handleDelete = (id) => {
         // ID của dữ liệu bạn muốn xóa
         console.log(id)
-        axios.delete(`http://localhost:1337/api/admins/${id}`)
+        axios.delete(`http://localhost:1337/api/accounts/${id}`)
             .then(response => {
                 console.log('Dữ liệu đã được xóa thành công!');
                 axios.get(http + "/api/admins?populate=*")

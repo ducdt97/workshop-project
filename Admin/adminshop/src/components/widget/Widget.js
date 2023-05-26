@@ -16,7 +16,7 @@ const Widget = ({ type }) => {
         const fetchData = async () => {
             try {
                 // Gọi API lần 1
-                const response1 = await fetch('http://localhost:1337/api/admins');
+                const response1 = await fetch('http://localhost:1337/api/accounts');
                 const data1 = await response1.json();
 
                 // Lấy dữ liệu từ response1 và gọi API lần 2

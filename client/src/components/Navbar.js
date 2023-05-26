@@ -1,30 +1,40 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Cart from "./Cart/Cart";
+import axios from 'axios';
 
 function Navbar() {
   const [open, setOpen] = useState(false);
-  const products = useSelector(state => state.cart.products)
+  const products = useSelector((state) => state.cart.products);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userName, setUserName] = useState('');
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-    const userId = localStorage.getItem('userId');
-    const storedUserName = localStorage.getItem('userName');
+    const getUser = async () => {
+      try {
+        const response = await axios.get(`http://localhost:1337/api/accounts/${userId}`);
+        const user = response.data.data;
+        setUser(user);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     if (userId) {
       setIsLoggedIn(true);
-      setUserName(storedUserName);
+      getUser();
     }
-  }, []);
+  }, [userId]);
 
   const toggle = () => setOpen(!open);
 
   const handleLogout = () => {
-    localStorage.removeItem('userId');
-    localStorage.removeItem('userName');
+    localStorage.removeItem("userId");
     setIsLoggedIn(false);
-    setUserName('');
+    navigate("/login");
   };
 
   return (
@@ -74,11 +84,6 @@ function Navbar() {
               <Link to="/rating" className="nav-link">
                 Rating
               </Link>
-            </li>           
-            <li className="nav-item">
-              <Link to="/login" className="nav-link" onClick={handleLogout}>
-                {isLoggedIn ? userName : "Login"}
-              </Link>
             </li>
           </ul>
           <button
@@ -92,8 +97,16 @@ function Navbar() {
               {products.length}
             </span>
           </button>
+          {isLoggedIn ? (
+            <>
+              <span className="nav-link m-2">Hi: {user?.attributes?.name}</span>
+              <button className="btn btn-link nav-link m-2" onClick={handleLogout}>Logout</button>
+            </>
+          ) : (
+            <Link to="/login" className="nav-link m-2">Login</Link>
+          )}
         </div>
-        {open ? <Cart onClose={() => setOpen(false)} /> : ""}
+        {open && <Cart onClose={() => setOpen(false)} isLoggedIn={isLoggedIn} />}
       </div>
     </nav>
   );
