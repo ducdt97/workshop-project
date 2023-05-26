@@ -10,39 +10,46 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+
     addToCart: (state, action) => {
-      const item = state.products.find((item) => item.id === action.payload.id);
+      const { id, number, img } = action.payload;
+      const item = state.products.find((item) => item.id === id && item.img === img);
+      
       if (item) {
-        if (item.number === action.payload.number) {
-          toast.warning("products already in the cart!");
+        if (item.number === number) {
+          toast.warning("Product is already in the cart!");
         } else {
-          item.number += action.payload.number;
-          state.total += action.payload.number * item.price;
-          toast.info("cart has been updated");
+          item.number += number;
+          state.total += number * item.price;
+          toast.info("Cart has been updated");
         }
       } else {
         state.products.push(action.payload);
-        state.total += action.payload.number * action.payload.price;
-        toast.success("you have just added a product to cart");
+        state.total += number * action.payload.price;
+        toast.success("You have just added a product to the cart");
       }
     },
+    
     removeItem: (state, action) => {
-      const removedItem = state.products.find(
-        (item) => item.id === action.payload
+      const { id, img } = action.payload;
+      const removedItemIndex = state.products.findIndex(
+        (item) => item.id === id && item.img === img
       );
-      if (removedItem) {
-        state.products = state.products.filter(
-          (item) => item.id !== action.payload
-        );
+      
+      if (removedItemIndex !== -1) {
+        const removedItem = state.products[removedItemIndex];
+        state.products.splice(removedItemIndex, 1);
         state.total -= removedItem.number * removedItem.price;
-        toast.success("remove success")
+        toast.success("Remove success");
       }
     },
+
     resetCart: (state) => {
       state.products = [];
       state.total = 0;
       toast.info("cart is empty")
     },
+
     calculateTotal(state) {
       let total = 0;
       state.products.forEach((item) => {

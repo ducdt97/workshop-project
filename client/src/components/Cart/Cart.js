@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export const selectCartProducts = createSelector(
   state => state.cart.products,
-  products => products,
+  products => products.map(item => ({ ...item, img: item.img })),
 );
 
 function Cart({onClose}) {
@@ -48,7 +48,7 @@ function Cart({onClose}) {
               </div>
               <i
                 className="bi bi-trash3-fill delete"
-                onClick={() => handleOpenModal(item.id)}
+                onClick={() => handleOpenModal({ id: item.id, img: item.img })}
               ></i>
             </div>
           ))}
